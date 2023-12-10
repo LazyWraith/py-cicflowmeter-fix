@@ -163,9 +163,6 @@ class FlowBytes:
 
         packets = self.feature.packets
 
-        if not packets:
-            return 0
-
         return sum(
             self._header_size(packet)
             for packet, direction in packets
@@ -182,14 +179,14 @@ class FlowBytes:
 
         packets = self.feature.packets
 
-        if not packets:
+        try:
+            return min(
+                self._header_size(packet)
+                for packet, direction in packets
+                if direction == PacketDirection.FORWARD
+            )
+        except:
             return 0
-
-        return min(
-            self._header_size(packet)
-            for packet, direction in packets
-            if direction == PacketDirection.FORWARD
-        )
 
     def get_reverse_rate(self) -> int:
         """Calculates the rate of the bytes being going reverse
@@ -265,12 +262,12 @@ class FlowBytes:
 
     def get_bulk_rate(self, packet_direction):
         if packet_direction == PacketDirection.FORWARD:
-            if self.feature.forward_bulk_count != 0:
+            if self.feature.forward_bulk_duration != 0:
                 return (
                     self.feature.forward_bulk_size / self.feature.forward_bulk_duration
                 )
         else:
-            if self.feature.backward_bulk_count != 0:
+            if self.feature.backward_bulk_duration != 0:
                 return (
                     self.feature.backward_bulk_size
                     / self.feature.backward_bulk_duration
