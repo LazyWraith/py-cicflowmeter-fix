@@ -11,7 +11,7 @@
 ### Installation
 ```sh
 git clone https://github.com/LazyWraith/py-cicflowmeter-fix
-cd cicflowmeter
+cd py-cicflowmeter-fix
 python3 setup.py install
 ```
 
