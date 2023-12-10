@@ -1,3 +1,5 @@
+from scapy.layers.inet import IP, TCP
+
 class FlagCount:
     """This class extracts features related to the Flags Count."""
 
@@ -32,6 +34,6 @@ class FlagCount:
         )
 
         for packet in packets:
-            if flag[0] in str(packet.flags):
+            if packet.haslayer(TCP) and flag[0] in str(packet[TCP].flags):
                 return 1
         return 0
