@@ -2,20 +2,21 @@
 
 > This project is cloned from [Python CICFlowMeter](https://github.com/datthinh1801/cicflowmeter) and customized to fit my need. Therefore, it is not maintained actively. If there are any problems, please create an issue or a pull request.  
 
-# What's Different?
+# Changelog
+### v1.0
 - Fixed conversion TypeError in `utils.py`
 - Fixed incorrect date_time cast that causes TypeError in `packet_time.py`
 - Fixed empty sequence in min() causing errors in `flow_bytes.py`
 - Fixed packet flags incorrectly showing IP layer flags instead of TCP layer flags in `flag_count.py`
 
-### Installation
+# Installation
 ```sh
 git clone https://github.com/LazyWraith/py-cicflowmeter-fix
 cd py-cicflowmeter-fix
 python3 setup.py install
 ```
 
-### Usage
+# Usage
 ```sh
 usage: cicflowmeter [-h] (-i INPUT_INTERFACE | -f INPUT_FILE) [-c] [-u URL_MODEL] output
 
