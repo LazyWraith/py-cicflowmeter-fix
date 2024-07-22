@@ -13,7 +13,14 @@
 ```sh
 git clone https://github.com/LazyWraith/py-cicflowmeter-fix
 cd py-cicflowmeter-fix
-python3 setup.py install
+python setup.py install
+```
+
+Alternatively, install from current directory:
+```sh
+git clone https://github.com/LazyWraith/py-cicflowmeter-fix
+cd py-cicflowmeter-fix
+pip install -e ./
 ```
 
 # Usage
